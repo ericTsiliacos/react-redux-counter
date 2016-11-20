@@ -1,6 +1,32 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+// Model
+
+const initialModel = 0
+
+// Actions
+
+const Msg = {
+  INCREMENT: "INCREMENT",
+  DECREMENT: "DECREMENT",
+}
+
+// Update
+
+export const Update = (state = initialModel, msg) => {
+  switch (msg.type) {
+    case Msg.INCREMENT:
+      return state + 1;
+    case Msg.DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+}
+
+// View
+
 const App = ({count, onIncrementClick, onDecrementClick}) => {
   return (
     <div>
@@ -24,10 +50,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onIncrementClick: () => {
-      dispatch({ type: 'INCREMENT' })
+      dispatch({ type: Msg.INCREMENT })
     },
     onDecrementClick: () => {
-      dispatch({ type: 'DECREMENT' })
+      dispatch({ type: Msg.DECREMENT })
     }
   }
 }

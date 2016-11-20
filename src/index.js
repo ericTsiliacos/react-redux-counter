@@ -3,23 +3,10 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-
-const counter = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-}
-
-const store = createStore(counter)
+import App, { Update } from './App';
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStore(Update)}>
     <App />
   </Provider>,
   document.getElementById('root')
